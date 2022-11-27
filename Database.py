@@ -16,8 +16,6 @@ class Database:
             geolocator = Nominatim(user_agent="request")
             geo_location = geolocator.geocode(tweet.user.location)
             if geo_location is not None:
-                # self.r.set(tweet.id,
-                #            json.dumps([geo_location.latitude, geo_location.longitude, tweet.user.screen_name]))
                 self.r.rpush("db", json.dumps(
                     {tweet.id: {"latitude": geo_location.latitude, "longitude": geo_location.longitude,
                                 "screen_name": tweet.user.screen_name, "date": tweet.created_at}}, default=str))
