@@ -10,8 +10,9 @@ if __name__ == '__main__':
 
     db = Database(api)
     hashtag = input("Search for a twitter hashtag: ")
-    daemon = Thread(target = db.populate(hashtag), daemon=True)
+    daemon = Thread(target=db.populate(hashtag), daemon=True)
     daemon.start()
+    db.populate(hashtag)
     num = input("Number of instances: ")
     db.expose_db()
 

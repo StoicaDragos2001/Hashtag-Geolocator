@@ -1,9 +1,14 @@
 import configparser
+
 import tweepy
 
 
 class APIauthenticator:
     def __init__(self, conf_location):
+        self.access_token_secret = None
+        self.access_token = None
+        self.api_key = None
+        self.api_key_secret = None
         self.conf_location = conf_location
         self.assume_credentials()
 
